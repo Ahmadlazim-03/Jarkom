@@ -1,5 +1,7 @@
 BASIC CONFIGURATION 
 
+
+
 1. /ip dhcp-client add interface=ether1 use-peer-dns=no add-default-route=yes disabled=no
 2. /ip address add address=192.168.10.1/24 interface=ether6
 3. /ip firewall nat add chain=srcnat out-interface=ether1 action=masquerade
@@ -7,6 +9,13 @@ BASIC CONFIGURATION
 5. /ip dhcp-server add name=dhcp_ether6 interface=ether6 address-pool=dhcp_pool_ether6 lease-time=10m disabled=no
 6. /ip dhcp-server network add address=192.168.10.0/24 gateway=192.168.10.1 dns-server=8.8.8.8,1.1.1.1
 7. /ip dns set servers=8.8.8.8,1.1.1.1 allow-remote-requests=yes
+
+
+
+
+
+
+
 
 BRIDGE
 
@@ -47,6 +56,18 @@ add action=masquerade chain=srcnat out-interface=ether1
 
 /system clock
 set time-zone-name=Asia/Jakarta
+
+
+
+
+
+
+
+
+
+
+
+
 
 WIFI AND LIMIT
 
