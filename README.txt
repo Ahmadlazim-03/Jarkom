@@ -113,3 +113,58 @@ Buat profil unlimited:
 🔹 Tamu (limit 5 Mbps)
 /ip hotspot user profile add name=guest rate-limit=5M/5M shared-users=1
 /ip hotspot user add name=tamu1 password=tamu123 profile=guest
+
+
+
+
+
+SOAL 
+
+
+Kalau maksudmu ingin *satu perangkat (misalnya router MikroTik)* memiliki *beberapa IP address* seperti IP A, IP B, dan IP C (misal: 192.168.1.1, 10.10.10.1, 172.16.0.1), maka kamu bisa *menambahkan banyak IP pada satu interface. Di MikroTik, ini disebut **multiple IP address assignment*.
+
+Berikut *cara menambahkan banyak IP* ke satu interface:
+
+---
+
+### ✅ *Langkah-langkah di Winbox / WebFig:*
+
+1. Buka Winbox / WebFig, login ke router.
+2. Masuk ke menu *IP* > *Addresses*.
+3. Klik tombol *+* (Add) untuk menambahkan IP baru.
+4. Masukkan IP Address, misalnya: 192.168.1.1/24
+
+   * Pilih interface, misalnya: ether2 atau bridge1.
+5. Klik *OK*.
+6. Ulangi langkah 3–5 untuk IP lain:
+
+   * 10.10.10.1/24
+   * 172.16.0.1/24
+
+---
+
+### ✅ *Langkah-langkah via Terminal (CLI):*
+
+bash
+/ip address add address=192.168.1.1/24 interface=ether2
+/ip address add address=10.10.10.1/24 interface=ether2
+/ip address add address=172.16.0.1/24 interface=ether2
+
+
+Atau kalau kamu pakai *bridge*, ganti ether2 jadi bridge1.
+
+---
+
+### 🔎 Catatan Penting:
+
+* IP yang berbeda subnet bisa dipasang di satu interface.
+* Pastikan *masing-masing IP punya subnet yang berbeda* dan tidak bentrok.
+* Biasanya dipakai untuk:
+
+  * Menghubungkan beberapa jaringan berbeda.
+  * Menyediakan layanan ke beberapa IP/subnet.
+  * Testing atau routing antar jaringan.
+
+---
+
+Kalau maksudmu beda (misalnya: 3 perangkat masing-masing IP A, B, dan C), beri penjelasan lebih lanjut ya biar bisa aku sesuaikan.
